@@ -12,9 +12,9 @@ class MainViewModel : ViewModel() {
     var imageFailureLiveData = MutableLiveData<String>()
     var progressBarLiveData = MutableLiveData<Boolean>()
 
-    fun getImageList(){
+    fun getImageList() {
         progressBarLiveData.postValue(true)
-        MainActivityModel.getImageList(object : RequestCompleteListener<MutableList<ImageModel>>{
+        MainActivityModel.getImageList(object : RequestCompleteListener<MutableList<ImageModel>> {
             override fun onSuccess(data: MutableList<ImageModel>) {
                 imageModelListLiveData.postValue(data)
                 progressBarLiveData.postValue(false)
@@ -27,4 +27,5 @@ class MainViewModel : ViewModel() {
 
         })
     }
+
 }

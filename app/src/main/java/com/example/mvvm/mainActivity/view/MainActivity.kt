@@ -18,18 +18,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater) //view binding
         setContentView(binding.root) //attach root view with activity
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java) // initialize viewModel
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java) //initialize viewModel
         setLiveDataListeners()   //observe data changing
         viewModel.getImageList() //request for data whenever you need
     }
 
     private fun setLiveDataListeners() {
-        viewModel.imageModelListLiveData.observe(this, { data ->
-            Log.i("checkData", "setLiveDataListeners: ${data.size}")
+        viewModel.imageModelListLiveData.observe(this, {
+            Log.i("checkData", "setLiveDataListeners: ${it.size}")
         })
 
-        viewModel.imageFailureLiveData.observe(this, {message ->
-            Log.i("checkData", "setLiveDataListeners: $message")
+        viewModel.imageFailureLiveData.observe(this, {
+            Log.i("checkData", "setLiveDataListeners: $it")
         })
 
         viewModel.progressBarLiveData.observe(this, { isProgress ->
